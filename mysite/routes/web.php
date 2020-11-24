@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 // POST 
 // AUTH
-
+Route::get("/auth/register", [RegisterController::class, "index"])->name("register");
+Route::get("/auth/login", [LoginController::class, "index"])->name("login");
 // COMMON
 Route::get('/', function () {
     return view('home');
