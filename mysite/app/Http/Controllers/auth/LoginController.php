@@ -14,5 +14,13 @@ class LoginController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+            "username" => "required|min:3|max:255",
+            "password" => "required|min:6|max:255"
+        ]);
+        if (!auth()->attempt($request->only("username", "password"))) {
+            return back()->with("status", "Invalid Credentials");
+        }
+        return redirect()->route("home");
     }
 }

@@ -11,7 +11,17 @@
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        @auth
         <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                        <button type="submit" class="btn btn-outline-dark nav-link">Logout</button>
+                </form>
+            </li>
+        </ul>
+        @endauth
             <ul class="navbar-nav">
                 @guest
                 <li class="nav-item">

@@ -6,7 +6,7 @@
     <div class="d-flex">
         <div class="mx-auto card bg-white rounded mt-3 mb-5 p-5">
             <div>
-            <form action="{{ route('register') }}" method="POST">    
+            <form action="{{ route('login') }}" method="POST">    
                 <legend class="text-center">Login</legend>
                 <hr />
                 @csrf 
@@ -26,7 +26,7 @@
 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-outline-dark">login</button>
+                    <button class="btn btn-outline-dark" type="submit">login</button>
                 </div>
                 <div>
                 <a href="{{ route('register') }}">Don´t have an Account?</a>
