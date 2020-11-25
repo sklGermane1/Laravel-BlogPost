@@ -20,6 +20,9 @@
                         <button type="submit" class="btn btn-outline-dark nav-link">Logout</button>
                 </form>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ route('create-post') }}">Create Post</a>
+            </li>
         </ul>
         @endauth
             <ul class="navbar-nav">
