@@ -23,6 +23,9 @@
             <li class="nav-item">
             <a class="nav-link" href="{{ route('create-post') }}">Create Post</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile',["user"=>auth()->user()]) }}">Profile</a>
+            </li>
         </ul>
         @endauth
             <ul class="navbar-nav">

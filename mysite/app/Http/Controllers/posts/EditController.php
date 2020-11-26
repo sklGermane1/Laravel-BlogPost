@@ -9,8 +9,13 @@ use App\Models\Post;
 class EditController extends Controller
 
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     public function index(Post $post)
     {
+        $this->authorize("authorized", $post);
         return view("posts.posts_form", [
             "create" => false,
             "edit" => true,
@@ -20,10 +25,12 @@ class EditController extends Controller
     }
     public function store(Request $request, Post $post)
     {
+
         $this->validate($request, [
             "title" => "required|min:3|max:255",
             "content" => "required|min:3|max:255"
         ]);
+
         $updated_post = Post::find($post->id);
         $updated_post->title = $request->title;
         $updated_post->content = $request->content;
