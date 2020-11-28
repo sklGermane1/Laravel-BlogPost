@@ -20,13 +20,14 @@ class RegisterController extends Controller
             "username" => "required|min:3|max:255",
             "email" => "required|email|min:4|max:255",
             "password" => "required|min:6|max:255|confirmed",
-            "password_confirmation" => "required|min:6"
+            "password_confirmation" => "required|min:6",
         ]);
-
+        $file = "default.jpg";
         User::create([
             "username" => $request->username,
             "email" => $request->email,
-            "password" => Hash::make($request->password)
+            "password" => Hash::make($request->password),
+            "image" => $file
         ]);
 
         return redirect()->route("login");

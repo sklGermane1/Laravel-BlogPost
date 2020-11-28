@@ -9,6 +9,7 @@ use App\Http\Controllers\posts\CreatePostController;
 use App\Http\Controllers\posts\EditController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\UserPostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,8 @@ Route::post("/posts/create", [CreatePostController::class, "store"]);
 Route::delete("/posts/{post}/delete", [PostsController::class, "delete"])->name("delete-post");
 Route::get("/posts/{post}/edit", [EditController::class, "index"])->name("edit-post");
 Route::post("/posts/{post}/edit", [EditController::class, "store"]);
+Route::get("/posts/{user}", [UserPostsController::class, "index"])->name("user-posts");
+Route::get("/posts/{post}/post", [PostsController::class, "specific_Post"])->name("post");
 // PROFIL PAGE
 Route::get("/{user}/profile", [ProfileController::class, "index"])->name("profile");
 Route::post("/{user}/profile", [ProfileController::class, "store"]);

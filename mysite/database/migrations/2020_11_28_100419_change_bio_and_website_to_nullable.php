@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnsToPosts extends Migration
+class ChangeBioAndWebsiteToNullable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class AddColumnsToPosts extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->string("title");
-            $table->text("content");
-            $table->foreignId("user_id")->constrained()->onDelete("cascade");
+            $table->text("bio")->nullable();
+            $table->string("website")->nullable();
         });
     }
 
@@ -28,8 +27,10 @@ class AddColumnsToPosts extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn("bio");
+            $table->dropColumn("website");
         });
     }
 }

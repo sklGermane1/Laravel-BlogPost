@@ -23,7 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         "bio",
-        "website"
+        "website",
+        "image"
     ];
 
     /**
@@ -52,5 +53,9 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Likes::class);
+    }
+    public function receivedLikes()
+    {
+        return $this->hasManyThrough(Likes::class, Post::class);
     }
 }

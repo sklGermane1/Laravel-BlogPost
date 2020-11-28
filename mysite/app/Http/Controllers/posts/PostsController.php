@@ -14,7 +14,7 @@ class PostsController extends Controller
     }
     public function index()
     {
-        $posts = Post::latest()->with("user")->paginate(5);
+        $posts = Post::latest()->with(["user", "likes"])->paginate(5);
         return view("home", [
             "posts" => $posts
         ]);
@@ -24,5 +24,11 @@ class PostsController extends Controller
         $this->authorize("authorized", $post);
         $post->delete();
         return redirect()->route("home");
+    }
+    public function specific_Post(Post $post)
+    {
+        return view("posts.post", [
+            "post" => $post
+        ]);
     }
 }
