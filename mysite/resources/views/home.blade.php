@@ -1,6 +1,12 @@
 @extends("base")
 @section("content")
 <div class="container">
+    @if(session()->has("message"))
+    <div class="alert alert-success mt-3">
+        {{session()->get("message")}}
+        {{session()->forget("message")}}
+    </div>
+    @endif
     <h1 class="text-center mt-3">Posts</h1>
     <hr />
     @if ($posts->count())

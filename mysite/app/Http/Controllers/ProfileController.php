@@ -15,10 +15,13 @@ class ProfileController extends Controller
     }
     public function index(User $user)
     {
-
-        return view("profile_page", [
-            "user" => $user
-        ]);
+        if (auth()->user() == $user) {
+            return view("profile_page", [
+                "user" => $user
+            ]);
+        } else {
+            return redirect()->route("home");
+        }
     }
     public function store(Request $request, User $user)
     {

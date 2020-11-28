@@ -29,6 +29,7 @@ class RegisterController extends Controller
             "password" => Hash::make($request->password),
             "image" => $file
         ]);
+        $request->session()->flash("message", "You are now Registered!");
 
         return redirect()->route("login");
     }

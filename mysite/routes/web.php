@@ -10,6 +10,9 @@ use App\Http\Controllers\posts\EditController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\UserPostsController;
+use App\Http\Controllers\reset_password\reset_password_emailController;
+use App\Http\Controllers\reset_password\reset_passwordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +37,11 @@ Route::post("/{user}/profile", [ProfileController::class, "store"]);
 // LIKE && DISLIKE
 Route::post("/posts/{post}/like", [PostLikeController::class, "store"])->name("like");
 Route::delete("/posts/{post}/dislike", [PostLikeController::class, "destroy"]);
+// PASSWORD RESET 
+Route::get("/reset_password/", [reset_password_emailController::class, "index"])->name("reset_password_email");
+Route::post("/reset_password/", [reset_password_emailController::class, "store"]);
+Route::get("/reset_password/{token}", [reset_passwordController::class, "index"])->name("reset_password");
+Route::post("/reset_password/{token}", [reset_passwordController::class, "store"]);
 // AUTH
 Route::get("/auth/register", [RegisterController::class, "index"])->name("register");
 Route::get("/auth/login", [LoginController::class, "index"])->name("login");

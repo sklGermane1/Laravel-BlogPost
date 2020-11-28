@@ -21,6 +21,7 @@ class LoginController extends Controller
         if (!auth()->attempt($request->only("username", "password"))) {
             return back()->with("status", "Invalid Credentials");
         }
+        $request->session()->flash("message", "Your are now logged in.");
         return redirect()->route("home");
     }
 }
